@@ -177,7 +177,7 @@ $(repo_context)")
     title=$(jq -r '.pull_request.title' <<<"$ev")
     body=$(jq -r '.pull_request.body // ""' <<<"$ev")
     eyes "$number"
-    diff=$(gh pr diff "$number" 2>/dev/null | head -c 4000)
+    diff=$(gh pr diff "$number" 2>/dev/null | head -c 5000)
     answer=$(ask_model \
       'You are the first-look bot of an open-source Go + Next.js repository (an autonomous penetration testing agent system; AGPL-3.0). Summarize what this pull request changes in two or three sentences, then a short checklist: does it include or update tests, does it touch documentation where needed, does anything look inconsistent with the described goal. You are commenting for information only; you do not approve or request changes. Maximum 180 words, plain markdown.' \
       "Pull request title: $title
